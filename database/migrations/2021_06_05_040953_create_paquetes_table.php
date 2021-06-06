@@ -12,7 +12,7 @@ class CreatePaquetesTable extends Migration
      * @return void
      */
     public function up(){
-        Schema::create('servicio', function(Blueprint $table){
+        Schema::create('servicios', function(Blueprint $table){
             $table->id();
             $table->string('nombre');
             $table->text('descripcion');
@@ -24,12 +24,13 @@ class CreatePaquetesTable extends Migration
             $table->id();
             $table->string('descripcion');
             $table->text('fechaFinal');
+            $table->float('precio');
             $table->foreignId('user_id')->references('id')->on('users')->comment('El empleado que crea el paquete.');
             $table->timestamps();
         });
-        Schema::create('paquetes_servicio', function(Blueprint $table){
+        Schema::create('paquetes_servicios', function(Blueprint $table){
             $table->id();
-            $table->foreignId('servicio_id')->references('id')->on('servicio');
+            $table->foreignId('servicio_id')->references('id')->on('servicios');
             $table->foreignId('paquete_id')->references('id')->on('paquetes');
             $table->timestamps();
         });

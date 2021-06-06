@@ -74,7 +74,6 @@
                     name="precio"
                     class="form-control"
                     id="precio"
-                    disabled=""
                     value="{{ $sumaTotal }}"
                 />
             </div>

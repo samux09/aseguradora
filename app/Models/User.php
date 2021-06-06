@@ -20,6 +20,16 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'apellido_paterno',
+        'apellido_materno',
+        'estado',
+        'ciudad',
+        'cp',
+        'direccion',
+        'telefono',
+        'autorizado',
+        'tipo_usuario',
+        'permisos'
     ];
 
     /**
@@ -40,4 +50,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function paquetes(){
+        return $this->hasMany(Paquetes::class);
+    }
 }

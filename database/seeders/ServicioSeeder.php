@@ -13,7 +13,7 @@ class ServicioSeeder extends Seeder
      * @return void
      */
     public function run(){
-        DB::table('servicio')->insert([
+        DB::table('servicios')->insert([
             'nombre' => 'Protección contra robo de auto',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -22,7 +22,7 @@ class ServicioSeeder extends Seeder
             'descripcion' => 'Este servicio te protege contra el robo total de
             tu auto cubriendo el 100% del valor factura.',
         ]);
-        DB::table('servicio')->insert([
+        DB::table('servicios')->insert([
             'nombre' => 'Protección daños a terceros',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),
@@ -31,7 +31,7 @@ class ServicioSeeder extends Seeder
             'descripcion' => 'Este servicio cubre daños a terceros con un total
             de 300,000 MXN.',
         ]);
-        DB::table('servicio')->insert([
+        DB::table('servicios')->insert([
             'nombre' => 'Servicio de grua',
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s'),

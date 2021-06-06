@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Paquete;
-use Illuminate\Http\Request;
+use auth;
+use App\Models\Paquetes;
+use App\Models\Servicio;
 use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PaqueteController extends Controller{
     public function __construct(){
-        $this->middleware("auth");
+        $this->middleware("auth", ['except' => ['show']]);
     }
     /**
      * Display a listing of the resource.
@@ -17,7 +19,8 @@ class PaqueteController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function index(){
-        return view("paquetes.index");
+        $paquetes = auth()->user()->paquetes;
+        return view("paquetes.creado")->with("paquetes", $paquetes);
     }
 
     /**
@@ -26,7 +29,8 @@ class PaqueteController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        $servicios = DB::table('servicio')->select('id','nombre', 'descripcion', 'precio')->get();
+        //con modelo.
+        $servicios = Servicio::all(['id','nombre', 'descripcion', 'precio']);
         return view("paquetes.create")->with('servicios', $servicios);
     }
 
@@ -37,34 +41,36 @@ class PaqueteController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request){
-        //
         $data = request()->validate([
             "fechaFinal" => "required|min:10",
             "servicios" => "required",
             "descripcion" => "required",
             "precio" => "required"
         ]);
-        $serviciosSeleccionados = array();
-        foreach($request->servicios as $servicio){
-            array_push($serviciosSeleccionados, $servicio);
-        }
-        DB::table("paquetes")->insert([
-            "descripcion" => $data["descripcion"],
-            "fechaFinal"  => $data["fechaFinal"],
-            "precio"      => $data["precio"]
-        ]);
-        return redirect()->action("PaqueteController@create");
+        $paq = new Paquetes();
+        $ret = $paq->crearPaquete($data, Auth::user()->id, $request);
+        return redirect()->action("PaqueteController@index");
     }
 
+    public function busqueda(Request $request){
+        $data = request()->validate([
+            "id" => "required"
+        ]);
+        $id = $data["id"];
+        $paquete = Paquetes::find($id);
+        $servicios = $paquete->getServicios();
+        return view("paquetes.show", compact('paquete', 'servicios'));
+    }
     /**
      * Display the specified resource.
      *
      * @param  \App\Models\Paquete  $paquete
      * @return \Illuminate\Http\Response
      */
-    public function show(Paquete $paquete)
-    {
-        //
+    public function show($paquete){
+        $paquete = Paquetes::find($paquete);
+        $servicios = $paquete->getServicios();
+        return view("paquetes.show", compact('paquete', 'servicios'));
     }
 
     /**
@@ -73,7 +79,7 @@ class PaqueteController extends Controller{
      * @param  \App\Models\Paquete  $paquete
      * @return \Illuminate\Http\Response
      */
-    public function edit(Paquete $paquete)
+    public function edit(Paquetes $paquete)
     {
         //
     }
@@ -85,7 +91,7 @@ class PaqueteController extends Controller{
      * @param  \App\Models\Paquete  $paquete
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Paquete $paquete)
+    public function update(Request $request, Paquetes $paquete)
     {
         //
     }

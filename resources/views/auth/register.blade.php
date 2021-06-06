@@ -11,53 +11,92 @@
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <div class="row justify-content-center">
+                            <div class="col-4">
+                                <label for="nombre">Nombre(s):</label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" value={{ old("nombre") }}>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error("nombre")
+                                <span class="invalid-feedback d-block" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <div class="col-4">
+                                <label for="apellido_paterno">Apellido Paterno:</label>
+                                <input type="text" class="form-control" name="apellido_paterno" id="apellido_paterno" value={{ old("apellido_paterno") }}>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            @error("apellido_paterno")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <div class="col-4">
+                                <label for="apellido_materno">Apellido Materno:</label>
+                                <input type="text" class="form-control" name="apellido_materno" id="apellido_materno" value={{ old("apellido_materno") }}>
                             </div>
+                            @error("apellido_materno")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
+                        <div class="row justify-content-center my-3">
+                            <div class="col-4">
+                                <label for="estado">Estado:</label>
+                                <input type="text" class="form-control" name="estado" id="estado" value={{ old("estado") }}>
+                            </div>
+                            <div class="col-4">
+                                <label for="ciudad">Ciudad:</label>
+                                <input type="text" class="form-control" name="ciudad" id="ciudad" value={{ old("ciudad") }}>
+                            </div>
+                            <div class="col-4">
+                                <label for="cp">CP:</label>
+                                <input type="text" class="form-control" name="cp" id="cp" value={{ old("cp") }}>
+                            </div>
+                            @error("cp")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="row justify-content-center my-3">
+                            <div class="col-4">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" class="form-control" name="direccion" id="direccion" value={{ old("direccion") }}>
+                            </div>
 
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <div class="col-4">
+                                <label for="telefono">Teléfono:</label>
+                                <input type="text" class="form-control" name="telefono" id="telefono" value={{ old("telefono") }}>
+                            </div>
+                            @error("telefono")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="row align-items-start my-3">
+                            <div class="col-4">
+                                <label for="email">Correo:</label>
+                                <input type="text" class="form-control" name="email" id="email" value={{ old("email") }}>
+                            </div>
+                            @error("email")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <div class="col-4">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" class="form-control" name="password" id="password" value={{ old("password") }}>
+                            </div>
+                            @error("password")
+                            <span class="invalid-feedback d-block" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                            <div class="col-4">
+                                <label for="password-confirm">Confirmar Contraseña:</label>
+                                <input type="password" class="form-control" name="password_confirm" id="password-confirm">
                             </div>
                         </div>
 

@@ -1,0 +1,79 @@
+/** Footer **/
+.contenedor {
+    width: 98%;
+    margin: 0 auto;
+}
+
+@media (min-width: 480px) {
+    .contenedor {
+        width: 95%;
+    }
+}
+
+@media (min-width: 768px) {
+    .contenedor {
+        width: 90%;
+    }
+}
+
+@media (min-width: 992px) {
+    .contenedor {
+        width: 90%;
+        max-width: 1100px;
+    }
+}
+
+footer {
+    background-color: #353535;
+    padding-top: 40px;
+    margin-top: 20px;
+}
+
+footer.site-footer .contenedor>div {
+    color: #ffffff;
+    padding: 0px 20px;
+    font-size: 12px;
+}
+
+@media (min-width: 768px) {
+    footer.site-footer .contenedor>div {
+        width: 33.3%;
+        float: left;
+    }
+}
+
+footer.site-footer h3 {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 20px;
+}
+
+footer.site-footer h3 span {
+    color: #fe4918;
+}
+
+footer .ultimos-tweets li {
+    margin-bottom: 10px;
+}
+
+footer nav.redes-sociales {
+    text-align: left;
+}
+
+p.copyright {
+    background-color: #2e2e2e;
+    color: #ffffff;
+    padding: 10px 0;
+    margin: 20px 0 0 0;
+    text-align: center;
+}
+
+footer i {
+    font-size: 2rem;
+}
+
+.redes-sociales {
+    display: flex;
+    justify-content: space-between;
+}

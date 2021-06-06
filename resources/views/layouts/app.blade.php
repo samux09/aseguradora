@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm barra">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Seguros
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -33,19 +33,21 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="paquetes/mostrarpaquete">Paquetes</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Nuevos Paquetes</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -75,9 +77,51 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="container">
+            <div class="row">
+                <div class="py-4 col-12">
+                    @yield('botones')
+                </div>
+
+                <main class="py-4 col-12">
+                    @yield('content')
+                </main>
+            </div>
+        </div>
+
+        <footer class="site-footer">
+            <div class="contenedor clearfix">
+                <div class="footer-informacion">
+                    <h3>Sobre <span>Nosotros</span></h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt adipisci, laboriosam et cupiditate quidem ab dolor! Doloremque fugit inventore minima alias hic enim odio amet voluptates numquam? Ex, expedita voluptates!
+                    </p>
+                </div>
+                <div class="ultimos-tweets">
+                    <h3>Últimos <span>tweets</span></h3>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consectetur eius quae eligendi corporis adipisci blanditiis magni ab, in praesentium qui expedita dolorem totam odit velit explicabo fugit incidunt culpa.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consectetur eius quae eligendi corporis adipisci blanditiis magni ab, in praesentium qui expedita dolorem totam odit velit explicabo fugit incidunt culpa.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consectetur eius quae eligendi corporis adipisci blanditiis magni ab, in praesentium qui expedita dolorem totam odit velit explicabo fugit incidunt culpa.</li>
+                    </ul>
+                </div>
+                <div class="menu">
+                    <h3>Redes <span>sociales</span></h3>
+                    <nav class="redes-sociales">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </nav>
+                </div>
+            </div>
+    
+            <p class="copyright">
+                &copy Todos los derechos Reservados Equipo 3, Enero-Junio 2021.
+            </p>
+    
+        </footer>
+
+
     </div>
 </body>
 </html>

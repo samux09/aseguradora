@@ -49,10 +49,18 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        // dd($data);
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'nombre' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8'],
+            'apellido_paterno' => ['required', 'string', 'max:255'],
+            'apellido_materno' => ['required', 'string', 'max:255'],
+            'direccion' => ['required', 'string', 'max:255'],
+            'estado' => ['required', 'string', 'max:255'],
+            'ciudad' => ['required', 'string', 'max:255'],
+            'cp' => ['required', 'integer'],
+            'telefono' => ['required', 'integer'],
         ]);
     }
 
@@ -62,12 +70,20 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data){
         return User::create([
-            'name' => $data['name'],
+            'name' => $data['nombre'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'apellido_paterno' => $data['apellido_paterno'],
+            'apellido_materno' => $data['apellido_materno'],
+            'telefono' => $data['telefono'],
+            'direccion' => $data['direccion'],
+            'estado' => $data['estado'],
+            'ciudad' => $data['ciudad'],
+            'cp' => $data['cp'],
+            'tipo_usuario' => 1,
+            'permisos' => 1,
         ]);
     }
 }
