@@ -22,7 +22,8 @@ class Paquetes extends Model
             "descripcion" => $data["descripcion"],
             "fechaFinal"  => $data["fechaFinal"],
             "precio"      => $data["precio"],
-            'user_id'     => $us_id
+            'user_id'     => $us_id,
+            'autorizado' => 1
         ]);
         foreach($req->servicios as $servicio){
             DB::table('paquetes_servicios')->insert([
@@ -42,5 +43,13 @@ class Paquetes extends Model
             array_push($listaServicios, Servicio::find($id->servicio_id));
         }
         return $listaServicios;
+    }
+
+    public function paquetes_servicios(){
+        return $this->hasMany(Paquetes_servicio::class);
+    }
+
+    public function getPaquetes(){
+        return Paquetes::all();
     }
 }

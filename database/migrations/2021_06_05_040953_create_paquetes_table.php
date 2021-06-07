@@ -25,6 +25,7 @@ class CreatePaquetesTable extends Migration
             $table->string('descripcion');
             $table->text('fechaFinal');
             $table->float('precio');
+            $table->tinyInteger('autorizado');
             $table->foreignId('user_id')->references('id')->on('users')->comment('El empleado que crea el paquete.');
             $table->timestamps();
         });
@@ -41,8 +42,9 @@ class CreatePaquetesTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
+    public function down(){
+        Schema::dropIfExists('paquetes_servicios');
+        Schema::dropIfExists('servicios');
         Schema::dropIfExists('paquetes');
     }
 }

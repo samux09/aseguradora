@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class PaqueteController extends Controller{
     public function __construct(){
-        $this->middleware("auth", ['except' => ['show']]);
+        $this->middleware("auth", ['except' => ['show','mostrarPaquetes']]);
     }
     /**
      * Display a listing of the resource.
@@ -30,6 +30,11 @@ class PaqueteController extends Controller{
      */
     public function create(){
         //con modelo.
+        if(Auth::user()->tipo_usuario == 1){
+            $paquete = new Paquetes();
+            $listaPaquetes = $paquete->getPaquetes();
+            return view('home', compact('listaPaquetes'));
+        }
         $servicios = Servicio::all(['id','nombre', 'descripcion', 'precio']);
         return view("paquetes.create")->with('servicios', $servicios);
     }
@@ -53,13 +58,14 @@ class PaqueteController extends Controller{
     }
 
     public function busqueda(Request $request){
+        $tipo_usuario = Auth::user()->tipo_usuario;
         $data = request()->validate([
             "id" => "required"
         ]);
         $id = $data["id"];
         $paquete = Paquetes::find($id);
         $servicios = $paquete->getServicios();
-        return view("paquetes.show", compact('paquete', 'servicios'));
+        return view("paquetes.show", compact('paquete', 'servicios','tipo_usuario'));
     }
     /**
      * Display the specified resource.
@@ -68,9 +74,19 @@ class PaqueteController extends Controller{
      * @return \Illuminate\Http\Response
      */
     public function show($paquete){
+        if(auth()->user())
+            $tipo_usuario = Auth::user()->tipo_usuario;
+        else
+            $tipo_usuario = 0;
+        
         $paquete = Paquetes::find($paquete);
         $servicios = $paquete->getServicios();
-        return view("paquetes.show", compact('paquete', 'servicios'));
+        return view("paquetes.show", compact('paquete', 'servicios', 'tipo_usuario'));
+    }
+
+    public function mostrarPaquetes(){
+        $paquetes = Paquetes::all();
+        return view("paquetes.paquetes", compact('paquetes'));
     }
 
     /**

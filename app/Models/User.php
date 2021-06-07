@@ -54,4 +54,8 @@ class User extends Authenticatable
     public function paquetes(){
         return $this->hasMany(Paquetes::class);
     }
+
+    public function polizas(){
+        return $this->hasMany(Poliza::class);
+    }
 }

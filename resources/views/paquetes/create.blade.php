@@ -90,11 +90,13 @@
         if(document.getElementsByClassName("form-check-input").item(id-1).checked){
             let actual = parseInt(document.getElementById("precio").value);
             let sumador = parseInt(document.getElementById("td"+(id)).innerText);
+            sumador = sumador*365;
             document.getElementById("precio").value =  actual + sumador ;
             console.log("Checkeado.");
         }else{
             let actual = parseInt(document.getElementById("precio").value);
             let sumador = parseInt(document.getElementById("td"+(id)).innerText);
+            sumador = sumador*365;
             document.getElementById("precio").value =  actual - sumador ;
             console.log("Checkeado.");
         }

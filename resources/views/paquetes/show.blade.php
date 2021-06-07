@@ -48,6 +48,9 @@
             </textarea>
         </div>
     </form>
+    @if($tipo_usuario == 1)
+        <a href="../polizas/crear/{{ $paquete->id }}" class="btn btn-primary d-block">Contratar una Póliza</a>
+    @endif
 </div>
 
 

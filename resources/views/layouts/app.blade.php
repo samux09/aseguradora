@@ -18,13 +18,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @yield('styles')
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm barra">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Seguros
+                    Dar Tranquilidad
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -34,11 +35,20 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="paquetes/mostrarpaquete">Paquetes</a>
+                            <a class="nav-link" href="{{ route('paquetes.mostrar') }}">Paquetes</a>
                         </li>
+                        @if(Auth::user())
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Nuevos Paquetes</a>
+                            @if(Auth::user()->tipo_usuario == 0)
+                            @endif
+                            @if (Auth::user()->tipo_usuario == 1)
+                            <a class="nav-link" href="{{ route('polizas.mostrar') }}">Consultar Pólizas.</a>   
+                            @else
+                            <a class="nav-link" href="{{ route('paquetes.create') }}">Nuevo Páquete.</a>    
+                            @endif
                         </li>
+                        @endif
+                        
                     </ul>
 
                     <!-- Right Side Of Navbar -->
