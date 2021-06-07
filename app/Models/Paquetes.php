@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use GuzzleHttp\Client;
 use App\Models\Servicio;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
@@ -51,5 +52,12 @@ class Paquetes extends Model
 
     public function getPaquetes(){
         return Paquetes::all();
+    }
+
+    public static function validarPaquete(){
+        // $client = new Client();
+        // $res = $client->get('http://localhost:8000/api/aseguradora');
+        // dd($res);
+        return true;
     }
 }

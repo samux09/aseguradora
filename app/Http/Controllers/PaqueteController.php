@@ -86,6 +86,7 @@ class PaqueteController extends Controller{
 
     public function mostrarPaquetes(){
         $paquetes = Paquetes::all();
+        Paquetes::validarPaquete();
         return view("paquetes.paquetes", compact('paquetes'));
     }
 

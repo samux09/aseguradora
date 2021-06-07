@@ -104,11 +104,11 @@
                 <div class="footer-informacion">
                     <h3>Sobre <span>Nosotros</span></h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt adipisci, laboriosam et cupiditate quidem ab dolor! Doloremque fugit inventore minima alias hic enim odio amet voluptates numquam? Ex, expedita voluptates!
+                        Somos una compañía aseguradora comprometida a cuidar tus pertenencias o a ti mismo.
                     </p>
                 </div>
                 <div class="ultimos-tweets">
-                    <h3>Últimos <span>tweets</span></h3>
+                    <h3><span>Contactanos</span></h3>
                     <ul>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consectetur eius quae eligendi corporis adipisci blanditiis magni ab, in praesentium qui expedita dolorem totam odit velit explicabo fugit incidunt culpa.</li>
                         <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam consectetur eius quae eligendi corporis adipisci blanditiis magni ab, in praesentium qui expedita dolorem totam odit velit explicabo fugit incidunt culpa.</li>

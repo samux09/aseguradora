@@ -126,4 +126,12 @@ class Poliza extends Model{
         return $listaServicios;
     }
 
+    public function guardarImagenes($imagenes){
+        $ruta = "";
+        foreach($imagenes as $imagen){
+            $ruta = $ruta ."_". $imagen->store('upload-autos', 'public');
+        }
+        return $ruta;
+    }
+
 }

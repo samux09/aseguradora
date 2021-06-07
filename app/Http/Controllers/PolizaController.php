@@ -24,13 +24,10 @@ class PolizaController extends Controller{
             "imagenes.*" => "required|image",
             "id" => "required"
         ]);
-        foreach($request['imagenes'] as $imagen){
-            $ruta = $ruta ."_". $imagen->store('upload-autos', 'public');
-        }
-        $usuarioAutenticado = auth()->user()->id;
         $poliza = new Poliza();
+        $ruta = $poliza->guardarImagenes($request['imagenes']);
+        $usuarioAutenticado = auth()->user()->id;
         $poliza->crearPoliza($data, $usuarioAutenticado, $ruta);
-
         return redirect($consumoServicio['paypal_link']);
     }
 
